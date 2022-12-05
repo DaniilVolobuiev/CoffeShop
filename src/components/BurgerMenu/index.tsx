@@ -8,25 +8,26 @@ import { Link } from 'react-router-dom';
 import AuthButton from '../Navbar/Buttons/AuthButton';
 import { CartButton } from './../Navbar/Buttons/CartButton';
 import animationStyles from './animationStyles.module.scss';
+import { ANIMATION_TIME } from './../../utils/AnimationTime';
 
 export type BurgerProps = {
   opened: boolean;
-  onClose: () => boolean;
-  onOpen: () => boolean;
+  onClose: () => void;
+  onOpen: () => void;
 };
 
 export const BurgerMenu: React.FC<BurgerProps> = ({ opened, onClose, onOpen }) => {
-  const mounted = useMount({ opened, onClose });
   const overlayRef = React.useRef<HTMLDivElement>(null);
   const contentRef = React.useRef<HTMLDivElement>(null);
   const [animationIn, setAnimationIn] = React.useState(false);
+  const mounted = useMount(opened);
 
   console.log(mounted);
 
   const userID = useAppSelector((state) => state.userReducer.id);
   React.useEffect(() => {
     setAnimationIn(opened);
-  }, [opened]);
+  }, [opened, mounted]);
   const overlayAnimation = {
     enter: animationStyles.overlayEnter,
     enterActive: animationStyles.overlayEnterActive,
@@ -48,7 +49,7 @@ export const BurgerMenu: React.FC<BurgerProps> = ({ opened, onClose, onOpen }) =
       <CSSTransition
         in={animationIn}
         nodeRef={overlayRef}
-        timeout={300}
+        timeout={ANIMATION_TIME}
         mountOnEnter
         unmountOnExit
         classNames={overlayAnimation}>
@@ -57,7 +58,7 @@ export const BurgerMenu: React.FC<BurgerProps> = ({ opened, onClose, onOpen }) =
       <CSSTransition
         in={animationIn}
         nodeRef={contentRef}
-        timeout={300}
+        timeout={ANIMATION_TIME}
         mountOnEnter
         unmountOnExit
         classNames={contentAnimation}>

@@ -1,21 +1,25 @@
-import React from 'react';
-// import { BurgerProps } from '../components/BurgerMenu';
-export type BurgerProps = {
-  opened: boolean;
-  onClose: () => boolean;
-};
-export const useMount: React.FC<BurgerProps> = ({ opened, onClose }) => {
-  const [mounted, setMounted] = React.useState<boolean>(false);
-  const ANIMATION_TIME = 300;
-  React.useEffect(() => {
-    if (opened && !mounted) {
+import { useEffect, useState, useTransition } from 'react';
+
+import { BurgerProps } from '../components/BurgerMenu';
+import { ANIMATION_TIME } from './AnimationTime';
+
+export const useMount = (opened: boolean) => {
+  const [pending, startTransition] = useTransition();
+  const [mounted, setMounted] = useState(false);
+
+  console.log('mounted', mounted);
+  console.log('opeend', opened);
+  useEffect(() => {
+    if (!mounted && opened) {
       setMounted(true);
-    } else if (!opened && mounted) {
+    } else if (mounted && !opened) {
       setTimeout(() => {
         setMounted(false);
       }, ANIMATION_TIME);
     }
   }, [opened]);
+  console.log('mounted', mounted);
+  console.log('opeend', opened);
 
   return mounted;
 };

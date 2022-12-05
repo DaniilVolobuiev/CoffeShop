@@ -10,7 +10,7 @@ import styles from './signUp.module.scss';
 const SignUp = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const handleRegister = (email, password) => {
+  const handleRegister = (email: string, password: string) => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
@@ -19,7 +19,7 @@ const SignUp = () => {
           setUser({
             email: user.email,
             id: user.uid,
-            token: user.accessToken,
+            token: user.refreshToken,
           }),
         );
         navigate('/');

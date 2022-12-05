@@ -8,7 +8,7 @@ type handleClickType = {
 
 interface FormInterface {
   title: string;
-  handleClick: (a: string, b: string) => handleClickType;
+  handleClick: (email: string, password: string) => void;
 }
 
 const Form: React.FC<FormInterface> = ({ title, handleClick }) => {

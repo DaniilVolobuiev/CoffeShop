@@ -29,6 +29,7 @@ const Card: React.FC<itemType> = ({ id, title, imageUrl, price, sizes, types, ra
       size: activeSize,
       imageUrl,
       count: 0,
+      cartID: '',
     };
     dispatch(addItems(item));
   };

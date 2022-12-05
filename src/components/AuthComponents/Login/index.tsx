@@ -18,7 +18,7 @@ const Login: React.FC = () => {
           setUser({
             email: user.email,
             id: user.uid,
-            token: user.accessToken,
+            token: user.refreshToken,
           }),
         );
         navigate('/');

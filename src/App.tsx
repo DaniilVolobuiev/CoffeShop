@@ -38,7 +38,7 @@ const App: React.FC = () => {
 
   const [text, setText] = React.useState<string>('');
   const [inputText, setinputText] = React.useState<string>('');
-  const [burgerOpened, setBurgerOpen] = React.useState<boolean>(false);
+  const [opened, setOpened] = React.useState<boolean>(false);
 
   //Pagination variables
   const currentPage = useAppSelector((state) => state.filterReducer.currentPage);
@@ -73,13 +73,13 @@ const App: React.FC = () => {
         paginate,
       }}>
       <div className="App">
-        <Navbar setOpened={() => setBurgerOpen(true)} />
+        <Navbar setOpened={() => setOpened(true)} />
         <div className="wrapper">
-          {burgerOpened ? (
+          {opened ? (
             <BurgerMenu
-              opened={burgerOpened}
-              onClose={() => setBurgerOpen(false)}
-              onOpen={() => setBurgerOpen(true)}
+              opened={opened}
+              onClose={() => setOpened(false)}
+              onOpen={() => setOpened(true)}
             />
           ) : null}
 

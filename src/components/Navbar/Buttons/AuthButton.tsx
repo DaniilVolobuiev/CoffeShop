@@ -4,7 +4,7 @@ import styles from './authButton.module.scss';
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
 import { removeUser } from '../../../redux/slices/UserSlice';
 
-const AuthButton: React.FC<() => boolean> = ({ onClose }) => {
+const AuthButton: React.FC<any> = ({ onClose }) => {
   const dispatch = useAppDispatch();
   const userName = useAppSelector((state) => state.userReducer.email);
 

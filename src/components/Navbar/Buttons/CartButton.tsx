@@ -3,7 +3,7 @@ import styles from './cartButton.module.scss';
 import { useAppSelector } from '../../../redux/hooks';
 import IconForNav from '../../../images/iconForNav.svg';
 import { cartItemType } from '../../../redux/slices/CartSlice';
-export const CartButton: React.FC = () => {
+export const CartButton: React.FC<any> = ({ onClose }) => {
   const totalPrice = useAppSelector((state) => state.cartReducer.totalPrice);
   const cartItems = useAppSelector((state) => state.cartReducer.cartItems);
   const totalCount = cartItems.reduce((sum: number, item: cartItemType) => sum + item.count, 0);
@@ -11,7 +11,7 @@ export const CartButton: React.FC = () => {
   return (
     <>
       <Link to="/cart" style={{ textDecoration: 'none' }}>
-        <button className={styles.cart}>
+        <button className={styles.cart} onClick={() => onClose()}>
           <div className={styles.price}>
             <span>{totalPrice}</span>
             <span>$</span>
