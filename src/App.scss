@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+}
+ul {
+  list-style: none;
+  margin-top: 3em;
+  display: flex;
+  flex-direction: column;
+
+  li {
+    margin: 10px;
+    display: flex;
+    gap: 1em;
+  }
+}
