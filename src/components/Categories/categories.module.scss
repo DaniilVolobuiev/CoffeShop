@@ -1,0 +1,41 @@
+.categories {
+  list-style: none;
+  display: flex;
+  font-size: 20px;
+  gap: 15px;
+  width: 60%;
+  @media (max-width: 1110px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    justify-items: center;
+    align-content: center;
+  }
+
+  li {
+    background: #f9d9aa;
+    border-radius: 12px;
+    padding: 7px;
+    text-align: center;
+    width: 25%;
+    min-width: 125px;
+    height: fit-content;
+
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      background-color: darken(#f9d9aa, 4%);
+    }
+
+    &:active {
+      background-color: darken(#f9d9aa, 8%);
+    }
+
+    &.active {
+      background-color: #2f2105;
+      color: #fff;
+    }
+  }
+}

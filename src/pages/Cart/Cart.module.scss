@@ -1,0 +1,105 @@
+.wrapper {
+  padding: 7em 7em;
+  background-color: #fff7eb;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.remove {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  font-weight: 600;
+  font-size: 1em;
+  cursor: pointer;
+  &:hover {
+    span {
+      filter: invert(10%) sepia(10%) saturate(13%) hue-rotate(337deg) brightness(86%) contrast(86%);
+    }
+    img {
+      filter: invert(10%) sepia(10%) saturate(13%) hue-rotate(337deg) brightness(86%) contrast(86%);
+    }
+  }
+  span {
+    color: #b6b6b6;
+  }
+}
+.items {
+  margin-top: 2em;
+}
+.orderInfoWrapper {
+  display: flex;
+  flex-direction: column;
+}
+.orderInfo {
+  display: flex;
+  justify-content: space-between;
+  font-size: 22px;
+  span {
+    font-weight: 600;
+  }
+  .moneyAmount {
+    span {
+      color: #ff902a;
+    }
+  }
+}
+.navigateButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 3em;
+  .back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #d3d3d3;
+    border: 1px solid #d3d3d3;
+    border-radius: 30px;
+    height: 2.5em;
+    width: 12em;
+    text-decoration: none;
+
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      border-color: lighten(#b6b6b6, 5%);
+      color: lighten(#b6b6b6, 5%);
+      .arrow {
+        transform: translateX(-0.5em);
+      }
+    }
+    &:active {
+      border-color: darken(#b6b6b6, 5%);
+      color: darken(#b6b6b6, 5%);
+    }
+    .arrow {
+      color: #b6b6b6;
+      margin-right: 0.5em;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+  .order {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background: #ff902a;
+    border-radius: 30px;
+    height: 2.5em;
+    width: 12em;
+
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      background: lighten(#ff902a, 5%);
+    }
+    &:active {
+      background: darken(#ff902a, 5%);
+    }
+  }
+}

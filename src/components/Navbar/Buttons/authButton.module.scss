@@ -1,0 +1,23 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+  color: #ffffff;
+  background: #ff902a;
+  border: none;
+  border-radius: 7px;
+  flex-grow: 1;
+  text-align: center;
+  width: 100px;
+  text-decoration: none;
+
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    background-color: darken($color: #ff902b, $amount: 5%);
+  }
+  &:active {
+    background-color: lighten($color: #ff902b, $amount: 5%);
+  }
+}

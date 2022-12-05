@@ -1,0 +1,98 @@
+nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 140px;
+  @media (max-width: 1040px) {
+    padding: 20px 70px;
+  }
+
+  .navLeft {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    img {
+      position: relative;
+      top: 10px;
+    }
+  }
+
+  .searchAndCart {
+    display: flex;
+    gap: 24px;
+    @media (max-width: 1040px) {
+      display: none;
+    }
+  }
+  .search {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    // width: fit-content;
+
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 35px;
+    padding: 0.5em;
+    gap: 0.5em;
+    input {
+      border: none;
+      outline: none;
+    }
+  }
+}
+
+.findButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+  color: #ffffff;
+  background: #ff902a;
+  border: none;
+  border-radius: 7px;
+  flex-grow: 1;
+  text-align: center;
+  width: 100px;
+  text-decoration: none;
+
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    background-color: darken($color: #ff902b, $amount: 5%);
+  }
+  &:active {
+    background-color: lighten($color: #ff902b, $amount: 5%);
+  }
+}
+.menuBtn {
+  display: none;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  @media (max-width: 1040px) {
+    display: block;
+  }
+  span {
+    width: 30px;
+    height: 4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #222222;
+    transition: all 0.5s;
+    &:nth-of-type(2) {
+      top: calc(50% - 10px);
+    }
+    &:nth-of-type(3) {
+      top: calc(50% + 10px);
+    }
+  }
+}
