@@ -7,14 +7,22 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 20px 140px;
+  transition: all 500ms;
+  background-color: none;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
   @media (max-width: 1040px) {
     padding: 20px 70px;
+  }
+  .navActive {
+    background-color: #222222;
   }
 
   .navLeft {
     display: flex;
     gap: 1em;
     align-items: center;
+    opacity: 1;
     img {
       position: relative;
       top: 10px;

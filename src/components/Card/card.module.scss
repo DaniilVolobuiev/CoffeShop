@@ -2,7 +2,7 @@
   z-index: 20;
   position: relative;
   top: 75px;
-  width: 20em;
+  width: max(0.2vh, 300px);
   min-width: 280px;
   transition: all 0.2s ease-in-out;
   &:hover {

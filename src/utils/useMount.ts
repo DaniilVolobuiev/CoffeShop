@@ -7,8 +7,6 @@ export const useMount = (opened: boolean) => {
   const [pending, startTransition] = useTransition();
   const [mounted, setMounted] = useState(false);
 
-  console.log('mounted', mounted);
-  console.log('opeend', opened);
   useEffect(() => {
     if (!mounted && opened) {
       setMounted(true);

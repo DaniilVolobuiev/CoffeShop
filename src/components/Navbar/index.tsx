@@ -18,11 +18,14 @@ import { AppContextInteface } from '../../App';
 import AuthButton from './Buttons/AuthButton';
 import { CartButton } from './Buttons/CartButton';
 
-const Navbar: React.FC<any> = ({ setOpened }) => {
+import { useInView, InView } from 'react-intersection-observer';
+import { useWhyDidYouUpdate } from 'ahooks';
+
+const Navbar: React.FC<any> = React.memo(({ setOpened }) => {
   const location = useLocation();
   const isMounted = React.useRef(false);
   const dispatch = useAppDispatch();
-  const [colorNav, setColorNav] = React.useState<string>('');
+  const [navScrolled, setNavScrolled] = React.useState(false);
 
   const cartItems = useAppSelector((state) => state.cartReducer.cartItems);
   const userName = useAppSelector((state) => state.userReducer.email);
@@ -41,6 +44,23 @@ const Navbar: React.FC<any> = ({ setOpened }) => {
       behavior: 'smooth',
     });
   };
+  const scroll = () => {
+    const body = document.body;
+    const position = body.getBoundingClientRect();
+    if (position.y < -95) {
+      setNavScrolled(true);
+      window.removeEventListener('scroll', scroll);
+      console.log(position.y);
+    }
+  };
+  window.addEventListener('scroll', scroll);
+
+  // React.useEffect(() => {
+  //   if (inView) {
+  //     setNavScrolled(true);
+  //     console.log(inView, 'dm.');
+  //   }
+  // }, [inView]);
   React.useEffect(() => {
     if (isMounted.current) {
       const json = JSON.stringify(cartItems);
@@ -55,7 +75,8 @@ const Navbar: React.FC<any> = ({ setOpened }) => {
   };
 
   return (
-    <nav style={{ backgroundColor: colorNav }}>
+    // <InView as="nav" threshold={0.5} onChange={(inView, entry) => {}} initialInView={false}>
+    <nav style={navScrolled ? { background: 'rgba(231, 198, 174, 0.7)' } : null}>
       <div className={styles.navLeft}>
         <Link to="/">
           <img src={Logo} />
@@ -92,7 +113,8 @@ const Navbar: React.FC<any> = ({ setOpened }) => {
         <CartButton />
       </div>
     </nav>
+    // </InView>
   );
-};
+});
 
 export default Navbar;

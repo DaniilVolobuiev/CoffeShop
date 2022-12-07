@@ -17,6 +17,7 @@ import { setCurrentPage } from './redux/slices/FilterSlice';
 
 import { useAppSelector, useAppDispatch } from './redux/hooks';
 import { itemType } from './redux/slices/ItemsSlice';
+import { useInView, InView } from 'react-intersection-observer';
 
 export interface AppContextInteface {
   setText: (a: string) => string;
@@ -74,6 +75,7 @@ const App: React.FC = () => {
       }}>
       <div className="App">
         <Navbar setOpened={() => setOpened(true)} />
+
         <div className="wrapper">
           {opened ? (
             <BurgerMenu

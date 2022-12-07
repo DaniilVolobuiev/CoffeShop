@@ -17,7 +17,7 @@ function Hero() {
           </p>
         </div>
         <div className={styles.heroPicture}>
-          <img src={HeroImg} width={300} />
+          <img className={styles.heroImg} src={HeroImg} />
           <div className={styles.heroElementWrapperName}>
             <div className={styles.heroPictureName}>
               <span>Cappuccino</span>
@@ -31,7 +31,7 @@ function Hero() {
           <div className={styles.heroElementWrapperRating}>
             <div className={styles.heroPictureRating}>
               <span>4.8</span>
-              <img src={Star} />
+              <img className={styles.starImg} src={Star} />
             </div>
           </div>
         </div>

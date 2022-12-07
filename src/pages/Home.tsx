@@ -31,6 +31,7 @@ function Home() {
   const navigate = useNavigate();
 
   const isMounted = React.useRef(false);
+  const popularNowRef = React.useRef();
   const [popular, setPopular] = React.useState<itemType[]>([]);
   const [isLoadingItems, setIsLoadingItems] = React.useState<boolean>(false);
   const [isLoadingPopular, setIsLoadingPopular] = React.useState<boolean>(false);
