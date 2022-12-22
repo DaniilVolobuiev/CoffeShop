@@ -1,11 +1,26 @@
 .wrapper {
-  padding: 7em 7em;
   background-color: #fff7eb;
+  position: absolute;
+  top: 25%;
+
+  width: 100%;
 }
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin: 1em 0;
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: max(1.5vw, 1rem);
+    font-weight: 600;
+    gap: 0.5rem;
+    img {
+      width: max(1.5vw, 1rem);
+    }
+  }
 }
 
 .remove {
@@ -13,8 +28,12 @@
   align-items: center;
   gap: 1em;
   font-weight: 600;
-  font-size: 1em;
+  font-size: max(1.5vw, 1rem);
+
   cursor: pointer;
+  img {
+    width: max(1.5vw, 1rem);
+  }
   &:hover {
     span {
       filter: invert(10%) sepia(10%) saturate(13%) hue-rotate(337deg) brightness(86%) contrast(86%);
@@ -27,17 +46,17 @@
     color: #b6b6b6;
   }
 }
-.items {
-  margin-top: 2em;
-}
+
 .orderInfoWrapper {
   display: flex;
   flex-direction: column;
 }
 .orderInfo {
   display: flex;
-  justify-content: space-between;
-  font-size: 22px;
+  justify-content: space-around;
+  align-items: center;
+  font-size: max(1.5vw, 1rem);
+  font-weight: 600;
   span {
     font-weight: 600;
   }
@@ -49,7 +68,7 @@
 }
 .navigateButtons {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 
   margin-top: 3em;
@@ -59,9 +78,10 @@
     align-items: center;
     color: #d3d3d3;
     border: 1px solid #d3d3d3;
-    border-radius: 30px;
-    height: 2.5em;
-    width: 12em;
+    border-radius: 2rem;
+    height: max(3vw, 3rem);
+    width: max(12vw, 12rem);
+    font-size: max(1.5vw, 1rem);
     text-decoration: none;
 
     cursor: pointer;
@@ -89,9 +109,10 @@
     align-items: center;
     color: #fff;
     background: #ff902a;
-    border-radius: 30px;
-    height: 2.5em;
-    width: 12em;
+    border-radius: 2rem;
+    height: max(3vw, 3rem);
+    width: max(12vw, 12rem);
+    font-size: max(1.5vw, 1rem);
 
     cursor: pointer;
     transition: all 0.2s ease-in-out;

@@ -11,6 +11,7 @@ import Card from '../components/Card';
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
 import Skeleton from '../skeleton/skeleton';
+import NotFound from '../components/NotFound';
 import { async } from '@firebase/util';
 
 import { AppContext } from './../App';
@@ -42,23 +43,15 @@ function Home() {
   const activeSort = useAppSelector((state) => state.filterReducer.sort);
   const currentPage = useAppSelector((state) => state.filterReducer.currentPage);
   const sortList = useAppSelector((state) => state.filterReducer.sortList);
-  const { text, inputText, currentCountry, totalItems, itemsPerPage }: Partial<AppContextInteface> =
-    React.useContext(AppContext);
-  const filterFunc = React.useCallback(
-    (array: itemType[]) => {
-      let filtered = array.filter((obj) => {
-        let lowerObj = obj.title.toLowerCase();
-        const text1 = text ? text : '';
-        if (lowerObj.includes(text1.toLowerCase())) {
-          return true;
-        }
-        return false;
-      });
+  const {
+    text,
+    inputText,
+    currentItems,
+    totalItems,
+    itemsPerPage,
+    filterFunc,
+  }: Partial<AppContextInteface> = React.useContext(AppContext);
 
-      return filtered;
-    },
-    [text],
-  );
   // const filterFunc = (array) => {
   //   let filtered = array.filter((obj) => {
   //     let lowerObj = obj.title.toLowerCase();
@@ -138,11 +131,22 @@ function Home() {
         <div className="menu__cards">
           {status === 'loading'
             ? [...Array(3)].map((obj, index) => <Skeleton key={index} />)
-            : currentCountry &&
-              filterFunc(currentCountry).map((obj) => <Card {...obj} key={obj.id} />)}
+            : currentItems &&
+              filterFunc &&
+              filterFunc(currentItems).map((obj) => <Card {...obj} key={obj.id} />)}
         </div>
       </section>
-      <Pagination />
+      {currentItems && filterFunc && filterFunc(currentItems).length ? (
+        <Pagination />
+      ) : (
+        <div style={{ marginBottom: '10rem' }}>
+          <NotFound
+            title="No items were found"
+            text1="Try to change search term or cathegory"
+            text2="Happy eating!"
+          />
+        </div>
+      )}
     </>
   );
 }

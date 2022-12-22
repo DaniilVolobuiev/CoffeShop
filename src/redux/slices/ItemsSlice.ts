@@ -62,7 +62,11 @@ const initialState: ItemsSliceState = {
 export const itemsReducer = createSlice({
   name: 'items',
   initialState,
-  reducers: {},
+  reducers: {
+    setItems(state, action) {
+      state.items = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(axiosGetItems.pending, (state) => {
       state.status = 'loading';
@@ -81,6 +85,6 @@ export const itemsReducer = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-// export const { setItems } = itemsReducer.actions;
+export const { setItems } = itemsReducer.actions;
 
 export default itemsReducer.reducer;

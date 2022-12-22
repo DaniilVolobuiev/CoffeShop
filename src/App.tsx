@@ -16,19 +16,20 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { setCurrentPage } from './redux/slices/FilterSlice';
 
 import { useAppSelector, useAppDispatch } from './redux/hooks';
-import { itemType } from './redux/slices/ItemsSlice';
-import { useInView, InView } from 'react-intersection-observer';
+import { itemType, setItems } from './redux/slices/ItemsSlice';
 
 export interface AppContextInteface {
   setText: (a: string) => string;
   text: string | undefined;
   inputText: string;
   setinputText: (a: string) => string;
+  setItemsPerPage: (a: number) => void;
 
   totalItems: number;
   itemsPerPage: number;
-  currentCountry: itemType[];
+  currentItems: itemType[];
   paginate?: (a: number) => number;
+  filterFunc: (a: itemType[]) => itemType[];
 }
 
 export const AppContext = React.createContext<AppContextInteface | {}>({});
@@ -41,14 +42,26 @@ const App: React.FC = () => {
   const [inputText, setinputText] = React.useState<string>('');
   const [opened, setOpened] = React.useState<boolean>(false);
 
+  const filterFunc = (array: itemType[]) => {
+    let filtered = array.filter((obj) => {
+      let lowerObj = obj.title.toLowerCase();
+      const text1 = text ? text : '';
+      if (lowerObj.includes(text1.toLowerCase())) {
+        return true;
+      }
+      return false;
+    });
+    console.log('Filtered', filtered);
+    return filtered;
+  };
+
   //Pagination variables
   const currentPage = useAppSelector((state) => state.filterReducer.currentPage);
   const [itemsPerPage, setItemsPerPage] = React.useState(3);
   const lastItemIndex = currentPage * itemsPerPage;
   const firstItemIndex = lastItemIndex - itemsPerPage;
-  console.log(CSSTransition);
-  const currentCountry = items.slice(firstItemIndex, lastItemIndex);
-  let totalItems = items.length;
+  const currentItems = filterFunc(items).slice(firstItemIndex, lastItemIndex);
+  let totalItems = filterFunc(items).length;
   const paginate = (pageNumber: number) => {
     dispatch(setCurrentPage(pageNumber));
   };
@@ -63,15 +76,16 @@ const App: React.FC = () => {
   return (
     <AppContext.Provider
       value={{
-        // setText,
+        setText,
         text,
         inputText,
         setinputText,
-
         totalItems,
         itemsPerPage,
-        currentCountry,
+        currentItems,
         paginate,
+        setItemsPerPage,
+        filterFunc,
       }}>
       <div className="App">
         <Navbar setOpened={() => setOpened(true)} />

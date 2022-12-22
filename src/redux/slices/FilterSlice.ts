@@ -1,4 +1,16 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+
+import React from 'react';
+
+// const currentPage = useAppSelector((state) => state.filterReducer.currentPage);
+// const [itemsPerPage, setItemsPerPage] = React.useState(3);
+// const lastItemIndex = state.currentPage * itemsPerPage;
+// const firstItemIndex = lastItemIndex - itemsPerPage;
+// const currentCountry = items.slice(firstItemIndex, lastItemIndex);
+// let totalItems = items.length;
+// const paginate = (pageNumber: number) => {
+//   dispatch(setCurrentPage(pageNumber));
+// };
 
 interface FilterSliceState {
   categoryId: number;

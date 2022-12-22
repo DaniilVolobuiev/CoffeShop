@@ -20,6 +20,7 @@ import { CartButton } from './Buttons/CartButton';
 
 import { useInView, InView } from 'react-intersection-observer';
 import { useWhyDidYouUpdate } from 'ahooks';
+import { setCurrentPage } from '../../redux/slices/FilterSlice';
 
 const Navbar: React.FC<any> = React.memo(({ setOpened }) => {
   const location = useLocation();
@@ -36,6 +37,7 @@ const Navbar: React.FC<any> = React.memo(({ setOpened }) => {
   const handleFilter = () => {
     if (setText && inputText) {
       setText(inputText);
+      dispatch(setCurrentPage(1));
     }
 
     window.scrollTo({
@@ -76,7 +78,7 @@ const Navbar: React.FC<any> = React.memo(({ setOpened }) => {
 
   return (
     // <InView as="nav" threshold={0.5} onChange={(inView, entry) => {}} initialInView={false}>
-    <nav style={navScrolled ? { background: 'rgba(231, 198, 174, 0.7)' } : null}>
+    <nav style={navScrolled ? { background: 'rgba(231, 198, 174, 1)' } : undefined}>
       <div className={styles.navLeft}>
         <Link to="/">
           <img src={Logo} />
