@@ -1,4 +1,23 @@
-.button {
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 35px;
+  padding: 0.5em;
+  gap: 0.5em;
+  img {
+    width: 1.2vw;
+  }
+  input {
+    border: none;
+    outline: none;
+    font-size: max(1.2vw, 1rem);
+  }
+}
+.findButton {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,13 +25,12 @@
   color: #ffffff;
   background: #ff902a;
   border: none;
-  border-radius: 1rem;
+  border-radius: 10%;
   flex-grow: 1;
   text-align: center;
   padding: 0.5rem;
   text-decoration: none;
   height: fit-content;
-  width: 100%;
 
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -22,4 +40,8 @@
   &:active {
     background-color: lighten($color: #ff902b, $amount: 5%);
   }
+}
+.wrapper {
+  display: flex;
+  gap: 1rem;
 }

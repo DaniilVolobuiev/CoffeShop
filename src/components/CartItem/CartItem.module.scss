@@ -1,29 +1,41 @@
 .wrapper {
   border-top: 2px solid #f4f4f4;
 
-  margin: 0 7em;
   font-weight: 700;
 }
 .content {
   list-style: none;
   display: flex;
   justify-content: space-between;
-  padding: 2em 5em;
+  gap: 2rem;
+  padding: 2rem;
+  margin: 0 3rem;
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
 }
 .info {
   display: flex;
-  justify-content: center;
+  justify-content: left;
+  align-items: center;
   gap: 2em;
-  span {
-    display: flex;
-    align-items: center;
-    font-weight: 400;
+  font-size: max(1vw, 1rem);
+  @media (max-width: 800px) {
+    justify-content: center;
+  }
+  img {
+    width: 20%;
+    min-width: 100px;
   }
 }
 .quantity {
   display: flex;
   align-items: center;
   gap: 1em;
+  font-size: max(1vw, 1rem);
+  button {
+    background: none;
+  }
 }
 .circle {
   display: flex;
@@ -31,16 +43,24 @@
   justify-content: center;
   border: 0.1875em solid #ff902a;
   border-radius: 50%;
-  height: 2em;
-  width: 2em;
+  font-size: max(1vw, 1rem);
+
+  width: 2vw;
+  height: 2vw;
+  min-width: 30px;
+  min-height: 30px;
 
   cursor: pointer;
+
   transition: all 0.2s ease-in-out;
   &:hover {
     background-color: #ff902a;
     .symbol {
       color: #fff;
     }
+  }
+  &:active {
+    transform: translateY(2px);
   }
   &:disabled {
     opacity: 0.4;
@@ -59,6 +79,7 @@
 .price {
   display: flex;
   align-items: center;
+  font-size: max(1vw, 1rem);
 }
 
 .remove {
@@ -73,8 +94,10 @@
   border: 0.1875em solid #2f2105;
   border-radius: 50%;
 
-  height: 2em;
-  width: 2em;
+  height: 2vw;
+  width: 2vw;
+  min-width: 30px;
+  min-height: 30px;
 
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -87,5 +110,39 @@
 }
 .symbolClose {
   font-weight: 600;
+  font-size: max(1vw, 1rem);
   color: #2f2105;
+}
+
+.title {
+  font-size: max(1.9vw, 1.5rem);
+}
+
+.typeBlue {
+  border-radius: 20%;
+  background-color: rgb(44, 95, 175);
+  padding: 5px;
+  color: #fff;
+}
+
+.typeRed {
+  border-radius: 20%;
+  background-color: rgb(187, 47, 47);
+  padding: 5px;
+  color: #fff;
+}
+
+.size {
+  border-radius: 20%;
+  background-color: rgb(47, 148, 29);
+  padding: 5px;
+  color: #fff;
+  margin-left: 1rem;
+}
+
+.contentRight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 }

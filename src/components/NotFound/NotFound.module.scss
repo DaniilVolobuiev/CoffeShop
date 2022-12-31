@@ -2,11 +2,15 @@
   text-align: center;
   position: relative;
   top: 25%;
+  img {
+    width: 20%;
+  }
   h3 {
-    font-size: 30px;
+    font-size: max(3vw, 2rem);
     font-weight: 600;
   }
   p {
     color: #777777;
+    font-size: max(1.5vw, 1rem);
   }
 }

@@ -36,28 +36,32 @@ const CartItem: React.FC<cartItemType> = ({
       <ul className={styles.content}>
         <li className={styles.info}>
           <img src={imageUrl} width={100} />
-          <span>
-            {title}
-            <br />
-            {type}, {size}ml
-          </span>
-        </li>
-        <li className={styles.quantity}>
-          <button className={styles.circle} onClick={onClickMinus} disabled={count < 2}>
-            <span className={styles.symbol}>&#8722;</span>
-          </button>
-          <div>{count}</div>
-
-          <button className={styles.circle} onClick={onClickPlus}>
-            <span className={styles.symbol}>&#x2b;</span>
-          </button>
-        </li>
-        <li className={styles.price}>{count && price * count}$</li>
-        <li className={styles.remove}>
-          <div className={styles.circleClose} onClick={onClickRemove}>
-            <span className={styles.symbolClose}>&#x292B;</span>
+          <div>
+            <span className={styles.title}>{title}</span>
+            <div>
+              <span className={type === 'Hot' ? styles.typeRed : styles.typeBlue}>{type}</span>
+              <span className={styles.size}>{size}ml</span>
+            </div>
           </div>
         </li>
+        <div className={styles.contentRight}>
+          <li className={styles.quantity}>
+            <button className={styles.circle} onClick={onClickMinus} disabled={count < 2}>
+              <span className={styles.symbol}>&#8722;</span>
+            </button>
+            <div>{count}</div>
+
+            <button className={styles.circle} onClick={onClickPlus}>
+              <span className={styles.symbol}>&#x2b;</span>
+            </button>
+          </li>
+          <li className={styles.price}>{count && price * count}$</li>
+          <li className={styles.remove}>
+            <div className={styles.circleClose} onClick={onClickRemove}>
+              <span className={styles.symbolClose}>&#x292B;</span>
+            </div>
+          </li>
+        </div>
       </ul>
     </div>
   );

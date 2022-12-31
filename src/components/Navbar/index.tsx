@@ -21,6 +21,7 @@ import { CartButton } from './Buttons/CartButton';
 import { useInView, InView } from 'react-intersection-observer';
 import { useWhyDidYouUpdate } from 'ahooks';
 import { setCurrentPage } from '../../redux/slices/FilterSlice';
+import Search from './../Search/index';
 
 const Navbar: React.FC<any> = React.memo(({ setOpened }) => {
   const location = useLocation();
@@ -31,21 +32,8 @@ const Navbar: React.FC<any> = React.memo(({ setOpened }) => {
   const cartItems = useAppSelector((state) => state.cartReducer.cartItems);
   const userName = useAppSelector((state) => state.userReducer.email);
 
-  const { setText, inputText, setinputText }: Partial<AppContextInteface> =
-    React.useContext(AppContext);
   const totalCount = cartItems.reduce((sum: number, item: cartItemType) => sum + item.count, 0);
-  const handleFilter = () => {
-    if (setText && inputText) {
-      setText(inputText);
-      dispatch(setCurrentPage(1));
-    }
 
-    window.scrollTo({
-      top: 1300,
-      left: 0,
-      behavior: 'smooth',
-    });
-  };
   const scroll = () => {
     const body = document.body;
     const position = body.getBoundingClientRect();
@@ -91,26 +79,7 @@ const Navbar: React.FC<any> = React.memo(({ setOpened }) => {
         <span></span>
       </div>
       <div className={styles.searchAndCart}>
-        {location.pathname !== '/cart' &&
-        location.pathname !== '/register' &&
-        location.pathname !== '/login' ? (
-          <>
-            <div className={styles.search}>
-              <img src={SearchIcon} />
-              <input
-                placeholder="Cappuchino"
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                  setinputText ? setinputText(event.target.value) : null
-                }
-                value={inputText}
-              />
-            </div>
-
-            <button onClick={() => handleFilter()} className={styles.findButton}>
-              Find
-            </button>
-          </>
-        ) : null}
+        <Search />
         <AuthButton />
         <CartButton />
       </div>

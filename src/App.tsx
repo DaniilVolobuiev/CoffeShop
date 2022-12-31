@@ -17,6 +17,7 @@ import { setCurrentPage } from './redux/slices/FilterSlice';
 
 import { useAppSelector, useAppDispatch } from './redux/hooks';
 import { itemType, setItems } from './redux/slices/ItemsSlice';
+import { useMount } from './utils/useMount';
 
 export interface AppContextInteface {
   setText: (a: string) => string;
@@ -41,23 +42,27 @@ const App: React.FC = () => {
   const [text, setText] = React.useState<string>('');
   const [inputText, setinputText] = React.useState<string>('');
   const [opened, setOpened] = React.useState<boolean>(false);
+  const { mounted } = useMount({ opened });
 
-  const filterFunc = (array: itemType[]) => {
-    let filtered = array.filter((obj) => {
-      let lowerObj = obj.title.toLowerCase();
-      const text1 = text ? text : '';
-      if (lowerObj.includes(text1.toLowerCase())) {
-        return true;
-      }
-      return false;
-    });
-    console.log('Filtered', filtered);
-    return filtered;
-  };
+  const filterFunc = React.useCallback(
+    (array: itemType[]) => {
+      let filtered = array.filter((obj) => {
+        let lowerObj = obj.title.toLowerCase();
+        const text1 = text ? text : '';
+        if (lowerObj.includes(text1.toLowerCase())) {
+          return true;
+        }
+        return false;
+      });
+      console.log('Filtered', filtered);
+      return filtered;
+    },
+    [text],
+  );
 
   //Pagination variables
   const currentPage = useAppSelector((state) => state.filterReducer.currentPage);
-  const [itemsPerPage, setItemsPerPage] = React.useState(3);
+  const [itemsPerPage, setItemsPerPage] = React.useState(4);
   const lastItemIndex = currentPage * itemsPerPage;
   const firstItemIndex = lastItemIndex - itemsPerPage;
   const currentItems = filterFunc(items).slice(firstItemIndex, lastItemIndex);
@@ -91,13 +96,7 @@ const App: React.FC = () => {
         <Navbar setOpened={() => setOpened(true)} />
 
         <div className="wrapper">
-          {opened ? (
-            <BurgerMenu
-              opened={opened}
-              onClose={() => setOpened(false)}
-              onOpen={() => setOpened(true)}
-            />
-          ) : null}
+          {mounted ? <BurgerMenu opened={opened} onClose={setOpened} /> : null}
 
           <Routes>
             <Route path="/" element={<Home />} />

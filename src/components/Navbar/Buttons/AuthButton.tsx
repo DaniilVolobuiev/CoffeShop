@@ -14,11 +14,13 @@ const AuthButton: React.FC<any> = ({ onClose }) => {
   return (
     <>
       {userName ? (
-        <button className={styles.button} onClick={() => removeUserFunc()}>
-          Log Out
-        </button>
+        <div className={styles.logOutWrapper}>
+          <button className={styles.button} onClick={() => removeUserFunc()}>
+            Log Out
+          </button>
+        </div>
       ) : (
-        <Link to="/login" className={styles.button}>
+        <Link to="/login" style={{ textDecoration: 'none' }}>
           <button onClick={() => onClose()} className={styles.button}>
             Login
           </button>

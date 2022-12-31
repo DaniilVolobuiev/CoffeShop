@@ -1,6 +1,7 @@
 .sortTitle {
   display: flex;
   gap: 1em;
+  font-size: max(1.5vw, 1rem);
 
   align-items: center;
   cursor: pointer;
@@ -33,6 +34,7 @@
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
   border-radius: 10px;
   background-color: #fff;
+  font-size: max(1.5vw, 1rem);
 
   display: inline-block;
   margin-top: 0.5em;

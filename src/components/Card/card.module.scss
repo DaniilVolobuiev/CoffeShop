@@ -2,8 +2,8 @@
   z-index: 20;
   position: relative;
   top: 75px;
-  width: max(0.2vh, 300px);
-  min-width: 280px;
+  width: max(20vw, 300px);
+
   transition: all 0.2s ease-in-out;
   &:hover {
     // transform: scale(1.03);
@@ -36,9 +36,8 @@
             rgba(255, 255, 255, 0.4) 100%
           );
           backdrop-filter: blur(4px);
-          border-radius: 62px;
-          height: 40px;
-          width: 25%;
+          border-radius: 10%;
+
           padding: 1px;
           display: flex;
           align-items: center;
@@ -48,7 +47,8 @@
           left: 10px;
           .cardPictureRating {
             background-color: #ffffff;
-            border-radius: 42px;
+            border-radius: 10%;
+            width: 90%;
 
             padding: 10px;
 
@@ -56,10 +56,11 @@
             align-items: center;
             justify-content: center;
 
-            font-size: 1em;
+            font-size: max(1vw, 1rem);
             font-weight: 600;
-            img {
-              width: 40%;
+            .starPicture {
+              width: max(1vw, 1rem);
+              height: fit-content;
             }
           }
         }
@@ -71,7 +72,7 @@
           display: flex;
           justify-content: space-between;
 
-          font-size: 24px;
+          font-size: max(1.3vw, 1.5rem);
           font-weight: 600;
 
           margin-bottom: 12px;
@@ -80,18 +81,19 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
+          gap: 1rem;
 
           .cardInfoCathgories {
             display: flex;
             flex-direction: column;
 
             padding: 5px;
-
-            width: 200px;
+            width: 100%;
 
             .cardInfoCathegoriesOne {
               display: flex;
               gap: 5px;
+              font-size: max(1vw, 1rem);
               span {
                 background: #f9d9aa;
                 border-radius: 7px;
@@ -118,11 +120,14 @@
             .cardInfoCathegoriesTwo {
               display: flex;
               gap: 5px;
+              font-size: max(1vw, 1rem);
+              min-width: 5rem;
               span {
                 background: #f9d9aa;
                 border-radius: 7px;
                 flex: 1;
                 text-align: center;
+                min-width: 4rem;
                 cursor: pointer;
                 transition: all 0.2s ease-in-out;
                 &:hover {
@@ -166,5 +171,18 @@
 
     font-size: 18px;
     font-weight: 600;
+  }
+}
+
+.addToCart {
+  width: 15%;
+  min-width: 3rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+  }
+  &:active {
+    transform: translateY(2px);
   }
 }

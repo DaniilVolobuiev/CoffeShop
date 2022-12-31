@@ -26,12 +26,16 @@ nav {
     img {
       position: relative;
       top: 10px;
+      width: 5vw;
+      min-width: 4rem;
     }
   }
 
   .searchAndCart {
     display: flex;
     gap: 24px;
+    align-items: center;
+
     @media (max-width: 1040px) {
       display: none;
     }
@@ -40,16 +44,19 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    // width: fit-content;
 
     background: #ffffff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 35px;
     padding: 0.5em;
     gap: 0.5em;
+    img {
+      width: 1.2vw;
+    }
     input {
       border: none;
       outline: none;
+      font-size: max(1.2vw, 1rem);
     }
   }
 }
@@ -58,15 +65,16 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1em;
+  font-size: max(1.2vw, 1rem);
   color: #ffffff;
   background: #ff902a;
   border: none;
-  border-radius: 7px;
+  border-radius: 10%;
   flex-grow: 1;
   text-align: center;
-  width: 100px;
+  padding: 0.5rem;
   text-decoration: none;
+  height: fit-content;
 
   cursor: pointer;
   transition: all 0.2s ease-in-out;

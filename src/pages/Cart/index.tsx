@@ -51,7 +51,7 @@ const Cart: React.FC = () => {
                   Items ordered: <span>{totalCount}</span>
                 </div>
                 <div className={styles.moneyAmount}>
-                  Sum to pay: <span>{totalPrice}</span>
+                  Sum to pay: <span>{totalPrice}</span> $
                 </div>
               </div>
             </div>

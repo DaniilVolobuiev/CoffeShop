@@ -26,7 +26,7 @@ const Card: React.FC<itemType> = ({ id, title, imageUrl, price, sizes, types, ra
       title,
       price,
       type: typeNames[activeType],
-      size: activeSize,
+      size: sizes[activeSize],
       imageUrl,
       count: 0,
       cartID: '',
@@ -39,12 +39,12 @@ const Card: React.FC<itemType> = ({ id, title, imageUrl, price, sizes, types, ra
       <div className={styles.cardOuter}>
         <div className={styles.cardWrapper}>
           <div className={styles.cardImage}>
-            <img src={imageUrl} width={250} height={375} />
+            <img src={imageUrl} />
 
             <div className={styles.cardWrapperRating}>
               <div className={styles.cardPictureRating}>
                 <span>{rating}</span>
-                <img src={Star} />
+                <img className={styles.starPicture} src={Star} />
               </div>
             </div>
           </div>

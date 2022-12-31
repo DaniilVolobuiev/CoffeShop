@@ -1,16 +1,16 @@
 import { useEffect, useState, useTransition } from 'react';
 
-import { BurgerProps } from '../components/BurgerMenu';
 import { ANIMATION_TIME } from './AnimationTime';
-
-export const useMount = (opened: boolean) => {
-  const [pending, startTransition] = useTransition();
+type qwet = {
+  opened: boolean;
+};
+export const useMount = ({ opened }: qwet) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     if (!mounted && opened) {
       setMounted(true);
-    } else if (mounted && !opened) {
+    } else if (!opened && mounted) {
       setTimeout(() => {
         setMounted(false);
       }, ANIMATION_TIME);
@@ -19,5 +19,7 @@ export const useMount = (opened: boolean) => {
   console.log('mounted', mounted);
   console.log('opeend', opened);
 
-  return mounted;
+  return {
+    mounted,
+  };
 };
