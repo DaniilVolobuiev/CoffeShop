@@ -40,7 +40,7 @@ export const Layout: React.FC<BurgerProps> = ({ opened, onClose }) => {
         mountOnEnter
         unmountOnExit
         classNames={overlayAnimation}>
-        <div ref={overlayRef} className={styles.overlay} onClick={onClose}></div>
+        <div ref={overlayRef} className={styles.overlay} onClick={() => onClose(false)}></div>
       </CSSTransition>
       <CSSTransition
         in={animationIn}

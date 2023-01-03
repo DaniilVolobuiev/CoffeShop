@@ -14,7 +14,7 @@ import { Layout } from './layout';
 
 export type BurgerProps = {
   opened: boolean;
-  onClose: () => void;
+  onClose: (value: boolean) => void;
 };
 
 export const BurgerMenu: React.FC<BurgerProps> = ({ opened, onClose }) => {
@@ -23,7 +23,7 @@ export const BurgerMenu: React.FC<BurgerProps> = ({ opened, onClose }) => {
   if (!mounted) {
     return null;
   }
-  return <Layout onClose={() => onClose(false)} opened={opened} />;
+  return <Layout onClose={onClose} opened={opened} />;
 };
 // export const BurgerMenu: React.FC<BurgerProps> = ({ opened, onClose, onOpen }) => {
 //   const mounted = useMount(opened);
